@@ -1,8 +1,8 @@
 # Scaffolding for an AJAX demo
 ## The object:
-- enter zip code
+- enter question
 - click a button
-- populate the weather field with data from server for the zip code
+- get a magic 8 ball response via AJAX
 
 ## To install:
 
