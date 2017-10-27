@@ -10,12 +10,12 @@ app.get('/', (req, res) => {
     .then((pets) => {
       res.render(
         'pets',
-        { pets },
+        { pets }
       )
     })
     .catch(console.error)
 })
 
 app.listen(3000, () =>
-  console.log('Example app listening on port 3000!'),
+  console.log('Example app listening on port 3000!')
 )

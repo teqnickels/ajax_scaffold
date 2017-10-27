@@ -4,7 +4,7 @@ const { resetDB } = require('./utilities/dbUtilities')
 
 describe('getPetsAndSpecies()', () => {
   beforeEach('reset the db', resetDB)
-  it('returns the correct number of results', () =>
+  it('should return the correct number of results', () =>
     getPetsAndSpecies().then(results =>
       expect(results.length).to.equal(1)
     )
@@ -12,30 +12,34 @@ describe('getPetsAndSpecies()', () => {
 })
 
 describe('updatePetName() success', () => {
+  const petId = 1
+  const newName = 'Fluffy'
   beforeEach('reset the db', resetDB)
-    it('updates the name to the new name', () => {
-      const petId = 1
-      const newName = 'Fluffy'
-      updatePetName(petId, newName).then(() =>
-        db.one('SELECT name FROM pets WHERE pet_id=$1', petId)
-          .then((pet) => {
-            expect(pet.name).to.equal(newName)
-          })
-      )
-    })
-    it('returns success when updating successfully', () => {
-      updatePetName(petId, newName).then(response =>
-        expect(response.success).to.be.true
-      )
-    })
-  })
-  context('failure', () => {
-    const updateFail = updatePetName('Fluffy', 45)
-
-    it('returns an error when updating unsuccessfully', () =>
-      updateFail.then(response =>
-        expect(response.success).to.be.false
-      )
+  it('should update the name to the new name', () =>
+    updatePetName(petId, newName).then(() =>
+      db.one('SELECT name FROM pets WHERE pet_id=$1', petId)
+        .then((pet) => {
+          expect(pet.name).to.equal(newName)
+        })
     )
-  })
+  )
+  it('should set success to true when successful', () =>
+    updatePetName(petId, newName).then(response =>
+      expect(response.success).to.be.true
+    )
+  )
+})
+context('failure', () => {
+  const updateFail = updatePetName(45, 'Fluffy')
+
+  it('should set success to false when unsuccessful', () =>
+    updateFail.then(response =>
+      expect(response.success).to.be.false
+    )
+  )
+  it('should return a specific error message when petID doesn\'t exist', () =>
+    updateFail.then(response =>
+      expect(response.message).to.equal('Could not find petId 45')
+    )
+  )
 })

@@ -26,8 +26,11 @@ const getPetsAndSpecies = () => {
  * @return {Promise} - resolves to object with keys 'success' and 'message'
  */
 const updatePetName = (petId, newName) =>
-  db.oneOrNone('UPDATE pets SET name=$1 WHERE pet_id=$2', newName, petId)
-    .then({ success: true, message: '' })
+  db.oneOrNone('UPDATE pets SET name=$1 WHERE pet_id=$2 RETURNING pet_id', [newName, petId])
+    .then((returnedId) => {
+      if (returnedId) return { success: true, message: '' }
+      return { success: false, message: `Could not find petId ${petId}` }
+    })
     .catch(err => Object({ success: false, message: err.message }))
 
 module.exports = {
