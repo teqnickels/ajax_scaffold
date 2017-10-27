@@ -1,6 +1,8 @@
 # Scaffolding for an AJAX demo
-## The object: When you click on a pet's name, have the option to change it
-### The change should be sent to the server via ajax
+## The object:
+- change pet name
+- record in the db via AJAX
+- display success / failure message on page
 
 ## To install:
 
