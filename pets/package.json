@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
+    "dev:start": "export NODE_ENV='dev' && npm start",
     "db:create": "createdb pets && psql pets < db/tables.sql",
     "db:seed": "psql pets < db/seed.sql",
     "db:delete": "dropdb pets",
@@ -28,6 +29,7 @@
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.3.0",
     "longjohn": "^0.2.12",
-    "mocha": "^4.0.1"
+    "mocha": "^4.0.1",
+    "nodemon": "^1.12.1"
   }
 }

@@ -10,5 +10,6 @@ html
         th Pet species
       each pet in pets
         tr
-          td= pet.name
+          td
+            input(class='pet-name', value=pet.name)
           td= pet.species_name
