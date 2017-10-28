@@ -8,4 +8,4 @@
 
 1. Fork or clone the repo
 2. `$ npm install`
-5. `$ npm dev:start`
+3. `$ npm dev:start`
