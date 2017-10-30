@@ -1,6 +1,8 @@
 const express = require('express')
 
 const app = express()
+app.use(express.static('public'))
+
 const predictions = [
   'It is certain',
   'It is decidedly so',
@@ -39,7 +41,7 @@ app.get('/', (req, res) => {
         <input type='submit'>
       </form>
       <div id='answer'></div>
-      <script src='magic8.js'></script>
+      <script src='/magic8.js'></script>
     </body>`)
 })
 
