@@ -39,7 +39,13 @@ app.get('/', (req, res) => {
         <input type='submit'>
       </form>
       <div id='answer'></div>
+      <script src='magic8.js'></script>
     </body>`)
+})
+
+app.get('/magic8response', (req, res) => {
+  const randomAnswer = getRandomAnswer()
+  res.send(randomAnswer)
 })
 
 app.listen(3000, () => {
