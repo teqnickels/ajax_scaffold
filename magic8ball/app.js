@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
     </head>
     <body>
       <h1>Magic 8 ball</h1>
-      <form>
+      <form id='question-form'>
         <textarea rows=4 cols=50 placeholder="type yes/no question here"></textarea></br>
         <input type='submit'>
       </form>
