@@ -4,7 +4,7 @@
 - record in the db via AJAX
 - display success / failure message on page
 
-## To install:
+## To install from scratch:
 
 1. Fork or clone the repo
 2. `$ npm install`
