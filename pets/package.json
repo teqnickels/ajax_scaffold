@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "dev:start": "export NODE_ENV='dev' && npm start",
     "db:create": "createdb pets && psql pets < db/tables.sql",
     "db:seed": "psql pets < db/seed.sql",
