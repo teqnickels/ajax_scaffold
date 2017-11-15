@@ -1,8 +1,13 @@
 const getUpdateMessage = (data) => {
   console.log('got here')
+  console.log(data);
   fetch('/updateName', {
     method: 'put',
-    body: data
+    body: JSON.stringify(data),
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
   })
   .then((message) =>{
     console.log(message);
