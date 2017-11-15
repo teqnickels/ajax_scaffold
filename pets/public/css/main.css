@@ -8,3 +8,13 @@ th {
   background-color: lightgray;
   text-align: center;
 }
+
+.error {
+  font-weight: bold;
+  color: red;
+}
+
+.success {
+  font-weight: bold;
+  color: red;
+}

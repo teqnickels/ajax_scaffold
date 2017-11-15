@@ -15,6 +15,7 @@ const getPetsAndSpecies = () => {
                   FROM pets AS p
                   JOIN species AS s
                     ON s.species_id = p.species_id
+                  ORDER BY pet_id
                 `
   return db.any(query)
 }

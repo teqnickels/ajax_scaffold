@@ -14,24 +14,17 @@ app.use(jsonParser());
 
 app.get('/', (req, res) => {
   getPetsAndSpecies()
-    .then((pets) => {
-      // console.log(pets);
-      res.render(
-        'pets',
-        { pets }
-      )
-    })
+    .then(pets => res.render('pets', { pets }))
     .catch(console.error)
 })
 
-app.put('/updateName', (req,res) => {
+app.put('/updateName', (req, res) => {
   console.log(req.body);
-  updatePetName(req.body.petId, req.body.name)
-    .then((message) => {
-      console.log(message);
-      // res.json({message: message})
-    })
+  updatePetName(req.body.petId, req.body.newName)
+    .then(message => res.json(message))
+    .catch(console.error)
 })
+
 app.listen(3000, () =>
   console.log('Example app listening on port 3000!')
 )

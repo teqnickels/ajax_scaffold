@@ -4,7 +4,6 @@ html
     link(href='/css/main.css', rel='stylesheet')
   body
     h1 Pets
-    form(id='updateForm' action='/updateName', method='POST')
       table
         tr
           th Pet name
@@ -12,11 +11,11 @@ html
         each pet in pets
           tr
             td
-              input(id='petID' type='hidden', value=pet.pet_id, name='petId')
-              input(id='name' class='pet-name', value=pet.name, name='name')
+              form(class='updateForm')
+                input(type='hidden', value=pet.pet_id, name='petId')
+                input(class='pet-name', value=pet.name, name='newName')
             td= pet.species_name
-      <input type="submit" style="display: none" />
 
     div(id='message')
     
-    script(src='/functions.js')
+    script(src='/js/main.js')
