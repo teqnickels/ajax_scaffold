@@ -11,13 +11,16 @@ const db = pgp(connection)
  * @return {Promise} - resolves to array of objects, each with keys 'name' and 'species_name'
  */
 const getPetsAndSpecies = () => {
-  const query = `SELECT p.name, s.species_name
+  const query = `SELECT p.pet_id, p.name, s.species_name
                   FROM pets AS p
                   JOIN species AS s
                     ON s.species_id = p.species_id
+                  ORDER BY p.pet_id
                 `
   return db.any(query)
 }
+
+//BELOW IS JSDOC, WHICH IS A PARTICULAR FORMAT FOR DOCUMENTING DIFFERENT THINGS
 
 /**
  * Update a pet's name in the database
@@ -25,10 +28,11 @@ const getPetsAndSpecies = () => {
  * @param  {string} newName - new name for pet
  * @return {Promise} - resolves to object with keys 'success' and 'message'
  */
+
 const updatePetName = (petId, newName) =>
   db.oneOrNone('UPDATE pets SET name=$1 WHERE pet_id=$2 RETURNING pet_id', [newName, petId])
     .then((returnedId) => {
-      if (returnedId) return { success: true, message: '' }
+      if (returnedId) return { success: true, message: 'Pet name was successfully updated' }
       return { success: false, message: `Could not find petId ${petId}` }
     })
     .catch(err => Object({ success: false, message: err.message }))

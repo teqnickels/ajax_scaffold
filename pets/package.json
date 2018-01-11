@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "nodemon app.js",
     "dev:start": "export NODE_ENV='dev' && npm start",
     "db:create": "createdb pets && psql pets < db/tables.sql",
     "db:seed": "psql pets < db/seed.sql",
@@ -15,8 +15,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
-    "nodemon": "^1.12.1",
     "pg-promise": "^7.0.1",
     "pug": "^2.0.0-rc.4"
   },
@@ -30,6 +30,6 @@
     "eslint-plugin-react": "^7.3.0",
     "longjohn": "^0.2.12",
     "mocha": "^4.0.1",
-    "nodemon": "^1.12.1"
+    "nodemon": "^1.14.11"
   }
 }
